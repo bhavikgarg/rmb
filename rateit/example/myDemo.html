@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel = "stylesheet" href = "../src/rateit.css">
+    <script src = "jQuery-2.1.4.min.js"></script>
+    <script src = "../src/jquery.rateit.min.js"></script>
+
+</head>
+<body>
+<div class = "rateit"></div>
+
+<script type = "text/javascript">
+
+    $(document).ready(function(){
+
+        $('.rateit').on('click', function(){
+            $('.rateit').rateit('value');
+            alert($('.rateit').rateit('value'));
+
+            // TO RESET THE RATING
+
+            $('.rateit').on('beforerated', function (e, value) {
+                if (!confirm('Are you sure you want to rate this item: ' +  value + ' stars?')) {
+                    e.preventDefault();
+                }
+            });
+            $('.rateit').on('beforereset', function (e) {
+                if (!confirm('Are you sure you want to reset the rating?')) {
+                    e.preventDefault();
+                }
+            });
+
+        });
+
+
+    });
+
+</script>
+
+</body>
+</html>
